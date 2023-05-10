@@ -26,7 +26,7 @@ export const AllLangs = [
 export type Lang = (typeof AllLangs)[number];
 
 const LANG_KEY = "lang";
-const DEFAULT_LANG = "cn";
+const DEFAULT_LANG = "en";
 
 function getItem(key: string) {
   try {
