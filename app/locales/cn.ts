@@ -27,6 +27,14 @@ const cn = {
       Retry: "重试",
       Delete: "删除",
     },
+    Commands: {
+      new: "新建聊天",
+      newm: "从面具新建聊天",
+      next: "下一个聊天",
+      prev: "上一个聊天",
+      clear: "清除上下文",
+      del: "删除聊天",
+    },
     InputActions: {
       Stop: "停止响应",
       ToBottom: "滚到最新",
@@ -47,7 +55,7 @@ const cn = {
       if (submitKey === String(SubmitKey.Enter)) {
         inputHints += "，Shift + Enter 换行";
       }
-      return inputHints + "，/ 触发补全";
+      return inputHints + "，/ 触发补全，: 触发命令";
     },
     Send: "发送",
     Config: {
@@ -115,6 +123,11 @@ const cn = {
       SubTitle: "聊天内容的字体大小",
     },
 
+    InputTemplate: {
+      Title: "用户输入预处理",
+      SubTitle: "用户最新的一条消息会填充到此模板",
+    },
+
     Update: {
       Version: (x: string) => `当前版本：${x}`,
       IsLatest: "已是最新版本",
@@ -180,6 +193,10 @@ const cn = {
       SubTitle: "管理员已开启加密访问",
       Placeholder: "请输入访问密码",
     },
+    Endpoint: {
+      Title: "接口地址",
+      SubTitle: "除默认地址外，必须包含 http(s)://",
+    },
     Model: "模型 (model)",
     Temperature: {
       Title: "随机性 (temperature)",
@@ -192,6 +209,10 @@ const cn = {
     PresencePenalty: {
       Title: "话题新鲜度 (presence_penalty)",
       SubTitle: "值越大，越有可能扩展到新话题",
+    },
+    FrequencyPenalty: {
+      Title: "频率惩罚度 (frequency_penalty)",
+      SubTitle: "值越大，越有可能降低重复字词",
     },
   },
   Store: {
@@ -273,6 +294,12 @@ const cn = {
     Create: "新建",
     Edit: "编辑",
   },
+  Exporter: {
+    Model: "模型",
+    Messages: "消息",
+    Topic: "主题",
+    Time: "时间",
+  },
 };
 
 type DeepPartial<T> = T extends object
@@ -280,7 +307,8 @@ type DeepPartial<T> = T extends object
       [P in keyof T]?: DeepPartial<T[P]>;
     }
   : T;
-export type LocaleType = DeepPartial<typeof cn>;
-export type RequiredLocaleType = typeof cn;
+
+export type LocaleType = typeof cn;
+export type PartialLocaleType = DeepPartial<typeof cn>;
 
 export default cn;
