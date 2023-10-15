@@ -7,6 +7,7 @@ import { useAccessStore } from "../store";
 import Locale from "../locales";
 
 import BotIcon from "../icons/bot.svg";
+import wechatQrcode from "../../public/wechat-qrcode.png";
 import { useEffect } from "react";
 import { getClientConfig } from "../config/client";
 
@@ -16,7 +17,10 @@ export function AuthPage() {
 
   const goHome = () => navigate(Path.Home);
   const goChat = () => navigate(Path.Chat);
-  const resetAccessCode = () => { access.updateCode(""); access.updateToken(""); }; // Reset access code to empty string
+  const resetAccessCode = () => {
+    access.updateCode("");
+    access.updateToken("");
+  }; // Reset access code to empty string
 
   useEffect(() => {
     if (getClientConfig()?.isApp) {
@@ -27,6 +31,14 @@ export function AuthPage() {
 
   return (
     <div className={styles["auth-page"]}>
+      <img
+        src={wechatQrcode.src}
+        width={190}
+        height={259}
+        alt=""
+        className=""
+      />
+
       <div className={`no-dark ${styles["auth-logo"]}`}>
         <BotIcon />
       </div>
